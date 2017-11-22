@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 510);
+/******/ 	return __webpack_require__(__webpack_require__.s = 512);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10795,7 +10795,70 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ }),
 /* 66 */,
 /* 67 */,
-/* 68 */,
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(26);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var IconBase = function IconBase(_ref, _ref2) {
+  var children = _ref.children;
+  var color = _ref.color;
+  var size = _ref.size;
+  var style = _ref.style;
+
+  var props = _objectWithoutProperties(_ref, ['children', 'color', 'size', 'style']);
+
+  var _ref2$reactIconBase = _ref2.reactIconBase;
+  var reactIconBase = _ref2$reactIconBase === undefined ? {} : _ref2$reactIconBase;
+
+  var computedSize = size || reactIconBase.size || '1em';
+  return _react2.default.createElement('svg', _extends({
+    children: children,
+    fill: 'currentColor',
+    preserveAspectRatio: 'xMidYMid meet',
+    height: computedSize,
+    width: computedSize
+  }, reactIconBase, props, {
+    style: _extends({
+      verticalAlign: 'middle',
+      color: color || reactIconBase.color
+    }, reactIconBase.style || {}, style)
+  }));
+};
+
+IconBase.propTypes = {
+  color: _propTypes2.default.string,
+  size: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  style: _propTypes2.default.object
+};
+
+IconBase.contextTypes = {
+  reactIconBase: _propTypes2.default.shape(IconBase.propTypes)
+};
+
+exports.default = IconBase;
+module.exports = exports['default'];
+
+/***/ }),
 /* 69 */,
 /* 70 */
 /***/ (function(module, exports) {
@@ -27616,7 +27679,7 @@ var ZNavbar = function (_React$Component) {
           _reactstrap.NavbarBrand,
           { href: '/' },
           _react2.default.createElement('img', { src: '/favicon.ico', height: 42 }),
-          '\xA0myzenwallet.io'
+          '\xA0wallet.myhush.network'
         ),
         _react2.default.createElement(
           _reactstrap.Collapse,
@@ -27624,15 +27687,6 @@ var ZNavbar = function (_React$Component) {
           _react2.default.createElement(
             _reactstrap.Nav,
             { className: 'ml-auto', navbar: true },
-            _react2.default.createElement(
-              _reactstrap.NavItem,
-              null,
-              _react2.default.createElement(
-                _reactstrap.NavLink,
-                { href: 'http://getzen.cash' },
-                'FREE ZEN'
-              )
-            ),
             _react2.default.createElement(
               _reactstrap.NavItem,
               null,
@@ -30699,7 +30753,7 @@ var ZFooter = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'MYZENWALLET.IO'
+                  'WALLET.MYHUSH.NETWORK'
                 )
               ),
               _react2.default.createElement(
@@ -30710,8 +30764,19 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Suggestions? Email me: kendricktan0814 at gmail.com or find me on slack @ kendricktan.'
+                'Suggestions?',
+               _react2.default.createElement(
+                'a',
+                { href: 'https://myhush.org/#contact' },
+                ' Contact us '
               ),
+                'or join our ',
+              _react2.default.createElement(
+                'a',
+                { href: 'https://discord.io/hush' },
+                'Discord '
+              ),
+                'server!'),
               _react2.default.createElement(
                 'p',
                 { style: longP },
@@ -30720,23 +30785,9 @@ var ZFooter = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'BTC'
+                  'HUSH'
                 ),
-                ': 12cEDPML2PoDkKeGcJUGJmEa5pQos3SVuf',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'ETH'
-                ),
-                ': 0x19Ed10db2960B9B21283FdFDe464e7bF3a87D05D',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'ZEN'
-                ),
-                ': znSDvF9nA5VCdse5HbEKmsoNbjCbsEA3VAH'
+                ': t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ'
               )
             ),
             _react2.default.createElement(
@@ -30744,32 +30795,32 @@ var ZFooter = function (_React$Component) {
               { md: '4' },
               _react2.default.createElement(
                 'a',
-                { href: 'https://zensystem.io/' },
+                { href: 'https://myhush.org/' },
                 'website'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://blog.zensystem.io/' },
-                'blog'
-              ),
-              _react2.default.createElement('br', null),
-              _react2.default.createElement(
-                'a',
-                { href: 'https://forum.zensystem.io/' },
+                { href: 'https://forum.myhush.org/' },
                 'forum'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://github.com/ZencashOfficial' },
+                { href: 'https://github.com/MyHush/myhushwallet' },
                 'github'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://slackinvite.zensystem.io/' },
+                { href: 'https://myhush.slack.com/' },
                 'slack'
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'a',
+                { href: 'https://discord.io/hush' },
+                'discord'
               ),
               _react2.default.createElement('br', null)
             )
@@ -30779,10 +30830,10 @@ var ZFooter = function (_React$Component) {
     }
   }]);
 
-  return ZFooter;
+    return ZFooter;
 }(_react2.default.Component);
 
-exports.default = ZFooter;
+    exports.default = ZFooter;
 
 /***/ }),
 /* 242 */,
@@ -30819,8 +30870,82 @@ exports.default = ZFooter;
 /* 273 */,
 /* 274 */,
 /* 275 */,
-/* 276 */,
-/* 277 */,
+/* 276 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(68);
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MdSettings = function MdSettings(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm20 25.9c3.2 0 5.9-2.7 5.9-5.9s-2.7-5.9-5.9-5.9-5.9 2.7-5.9 5.9 2.7 5.9 5.9 5.9z m12.4-4.3l3.5 2.8c0.4 0.2 0.4 0.7 0.2 1.1l-3.4 5.8c-0.2 0.3-0.6 0.4-1 0.3l-4.1-1.7c-0.9 0.7-1.8 1.3-2.8 1.7l-0.7 4.3c0 0.4-0.4 0.7-0.7 0.7h-6.8c-0.4 0-0.7-0.3-0.7-0.7l-0.7-4.3c-1-0.4-1.9-1-2.8-1.7l-4.1 1.7c-0.4 0.1-0.8 0-1-0.3l-3.4-5.8c-0.2-0.4-0.2-0.9 0.2-1.1l3.5-2.8c-0.1-0.5-0.1-1.1-0.1-1.6s0-1.1 0.1-1.6l-3.5-2.8c-0.4-0.2-0.4-0.7-0.2-1.1l3.4-5.7c0.2-0.4 0.6-0.5 1-0.4l4.1 1.7c0.9-0.6 1.8-1.3 2.8-1.7l0.7-4.3c0-0.4 0.3-0.7 0.7-0.7h6.8c0.3 0 0.7 0.3 0.7 0.7l0.7 4.3c1 0.4 1.9 1 2.8 1.7l4.1-1.7c0.4-0.1 0.8 0 1 0.4l3.4 5.7c0.2 0.4 0.2 0.9-0.2 1.1l-3.5 2.8c0.1 0.5 0.1 1.1 0.1 1.6s0 1.1-0.1 1.6z' })
+        )
+    );
+};
+
+exports.default = MdSettings;
+module.exports = exports['default'];
+
+/***/ }),
+/* 277 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(68);
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaUnlockAlt = function FaUnlockAlt(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm30.6 17.1q0.9 0 1.5 0.7t0.6 1.5v12.8q0 0.9-0.6 1.6t-1.5 0.6h-21.5q-0.8 0-1.5-0.6t-0.6-1.6v-12.8q0-0.9 0.6-1.5t1.5-0.7h0.8v-7.1q0-4.1 2.9-7.1t7.1-2.9 7 2.9 3 7.1q0 0.6-0.5 1t-1 0.4h-1.4q-0.6 0-1-0.4t-0.4-1q0-2.4-1.7-4t-4-1.7-4.1 1.7-1.7 4v7.1h16.5z' })
+        )
+    );
+};
+
+exports.default = FaUnlockAlt;
+module.exports = exports['default'];
+
+/***/ }),
 /* 278 */,
 /* 279 */,
 /* 280 */,
@@ -31053,7 +31178,9 @@ exports.default = ZFooter;
 /* 507 */,
 /* 508 */,
 /* 509 */,
-/* 510 */
+/* 510 */,
+/* 511 */,
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31075,9 +31202,9 @@ var _navbar = __webpack_require__(218);
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
-var _faq = __webpack_require__(511);
+var _guide = __webpack_require__(513);
 
-var _faq2 = _interopRequireDefault(_faq);
+var _guide2 = _interopRequireDefault(_guide);
 
 var _footer = __webpack_require__(241);
 
@@ -31086,11 +31213,11 @@ var _footer2 = _interopRequireDefault(_footer);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_navbar2.default, null), document.getElementById('navbar'));
-_reactDom2.default.render(_react2.default.createElement(_faq2.default, null), document.getElementById('faq'));
+_reactDom2.default.render(_react2.default.createElement(_guide2.default, null), document.getElementById('guide'));
 _reactDom2.default.render(_react2.default.createElement(_footer2.default, null), document.getElementById('footer'));
 
 /***/ }),
-/* 511 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31108,6 +31235,14 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactstrap = __webpack_require__(64);
 
+var _unlockAlt = __webpack_require__(277);
+
+var _unlockAlt2 = _interopRequireDefault(_unlockAlt);
+
+var _settings = __webpack_require__(276);
+
+var _settings2 = _interopRequireDefault(_settings);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31116,16 +31251,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ZFaq = function (_React$Component) {
-  _inherits(ZFaq, _React$Component);
+var ZGuide = function (_React$Component) {
+  _inherits(ZGuide, _React$Component);
 
-  function ZFaq() {
-    _classCallCheck(this, ZFaq);
+  function ZGuide() {
+    _classCallCheck(this, ZGuide);
 
-    return _possibleConstructorReturn(this, (ZFaq.__proto__ || Object.getPrototypeOf(ZFaq)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (ZGuide.__proto__ || Object.getPrototypeOf(ZGuide)).apply(this, arguments));
   }
 
-  _createClass(ZFaq, [{
+  _createClass(ZGuide, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -31138,82 +31273,129 @@ var ZFaq = function (_React$Component) {
             _reactstrap.Col,
             null,
             _react2.default.createElement(
-              'p',
+              'h3',
               null,
-              _react2.default.createElement(
-                'b',
-                null,
-                'Q: Are my private keys secured?'
-              ),
-              _react2.default.createElement('br', null),
-              'A: Yes they are secured, your private keys never leave your browser.'
+              '1. Creating a new wallet'
             ),
             _react2.default.createElement(
-              'p',
+              'ul',
               null,
               _react2.default.createElement(
-                'b',
+                'li',
                 null,
-                'Q: How is this secure? Its on a web browser!'
+                'Go to ',
+                _react2.default.createElement(
+                  'a',
+                  { href: 'https://wallet.myhush.org' },
+                  'https://wallet.myhush.org'
+                )
               ),
-              _react2.default.createElement('br', null),
-              'A: MyZenWallet has replicated the core features of the ZEN daemon in JavaScript! So the process of creating and signing the transactions are all done within the browser. No sensitive information is sent through the network.'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
               _react2.default.createElement(
-                'b',
+                'li',
                 null,
-                'Q: Can I have the source code?'
+                'Enter a strong but easy to remember secret phrase. Save this somewhere and do NOT forget it.'
               ),
-              _react2.default.createElement('br', null),
-              'A: ',
               _react2.default.createElement(
-                'a',
-                { href: 'https://github.com/zencashofficial/myzenwallet' },
-                'Here you go'
+                'li',
+                null,
+                'Click the ',
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  'Unlock Button'
+                ),
+                ' (',
+                _react2.default.createElement(_unlockAlt2.default, null),
+                ') on the right.'
+              ),
+              _react2.default.createElement(
+                'ul',
+                null,
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'This creates a ',
+                  _react2.default.createElement(
+                    'a',
+                    { href: 'https://en.bitcoin.it/wiki/Deterministic_wallet' },
+                    'deterministic wallet'
+                  ),
+                  ' based on your secret phrase.'
+                )
               )
             ),
+            _react2.default.createElement('br', null),
             _react2.default.createElement(
-              'p',
+              'h3',
               null,
-              _react2.default.createElement(
-                'b',
-                null,
-                'Q: Why are you doing this?'
-              ),
-              _react2.default.createElement('br', null),
-              'A: MyZenWallet was inspired by ',
-              _react2.default.createElement(
-                'a',
-                { href: 'https://myetherwallet.com' },
-                'MyEtherWallet\'s'
-              ),
-              ' mission statement: to provide the people the ability to interact with the ZEN blockchain easily, without having to run a full node.'
+              '2. Accessing an existing wallet'
             ),
             _react2.default.createElement(
-              'p',
+              'ul',
               null,
               _react2.default.createElement(
-                'b',
+                'li',
                 null,
-                'Q: Can I get free ZEN?'
+                'If you\'ve created a wallet on ',
+                _react2.default.createElement(
+                  'a',
+                  { href: 'https://wallet.myhush.org' },
+                  'https://wallet.myhush.org'
+                ),
+                ' via the secret phrase, simply re-enter the same phrase.'
               ),
-              _react2.default.createElement('br', null),
-              'A: Sure! Select an address frm your wallet (check out how to create a wallet via ',
               _react2.default.createElement(
-                'a',
-                { href: '/guide.html' },
-                'the guide'
+                'li',
+                null,
+                'For those with a ',
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  'wallet.dat'
+                ),
+                ' file generated by GUI wallets. Click ',
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  'settings'
+                ),
+                ' (',
+                _react2.default.createElement(_settings2.default, null),
+                '), select the ',
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  'Load wallet.dat'
+                ),
+                ' option and load your ',
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  'wallet.dat'
+                ),
+                ' file'
               ),
-              ' if you don\'t have one yet) and enter it into ',
               _react2.default.createElement(
-                'a',
-                { href: 'http://getzen.cash' },
-                'getzen.cash'
-              ),
-              '.'
+                'li',
+                null,
+                'To unlock a single address, Click ',
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  'settings'
+                ),
+                ' (',
+                _react2.default.createElement(_settings2.default, null),
+                '), select the ',
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  'Paste private key'
+                ),
+                ' option, paste in your private key and click the unlock button (',
+                _react2.default.createElement(_unlockAlt2.default, null),
+                ')'
+              )
             )
           )
         )
@@ -31221,10 +31403,10 @@ var ZFaq = function (_React$Component) {
     }
   }]);
 
-  return ZFaq;
+  return ZGuide;
 }(_react2.default.Component);
 
-exports.default = ZFaq;
+exports.default = ZGuide;
 
 /***/ })
 /******/ ]);
