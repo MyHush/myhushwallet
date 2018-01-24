@@ -34797,7 +34797,7 @@ var ZNavbar = function (_React$Component) {
               _react2.default.createElement(
                 _reactstrap.NavLink,
                 { href: '/faq.html' },
-                'FAQ'
+                '常見問題'
               )
             ),
             _react2.default.createElement(
@@ -34806,7 +34806,7 @@ var ZNavbar = function (_React$Component) {
               _react2.default.createElement(
                 _reactstrap.NavLink,
                 { href: '/guide.html' },
-                'GETTING STARTED'
+                '入門'
               )
             )
           )
@@ -38145,7 +38145,7 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'MAKE SURE YOU ARE ON ',
+                '請確認您是在這個網站上：',
                 _react2.default.createElement(
                   'b',
                   null,
@@ -38155,28 +38155,28 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Keys are validated client-side and do not leave your browser or network. You are responsible for keeping your own keys safe!!!'
+                '密鑰透過客戶端生效，請勿離開您的瀏覽器或網路。您有責任確保自己密鑰的安全！'
               ),
               _react2.default.createElement(
                 'p',
                 null,
-                'Suggestions?',
+                '有任何建議嗎？',
                _react2.default.createElement(
                 'a',
                 { href: 'https://myhush.org/#contact' },
-                ' Contact us '
+                '聯絡我們'
               ), 
-                ' or join our ',
+                '或加我們的',
               _react2.default.createElement(
                 'a',
                 { href: 'https://discord.io/hush' },
-                'Discord '
+                'Discord'
               ),
-                'server!'),
+                '伺服器!'),
               _react2.default.createElement(
                 'p',
                 { style: longP },
-                'Donations are always welcome!',
+                '我們永遠歡迎您的捐款支持！',
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                   'b',
@@ -38192,13 +38192,13 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'a',
                 { href: 'https://myhush.org/' },
-                'website'
+                '網站'
               ),              
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
                 { href: 'https://forum.myhush.org/' },
-                'forum'
+                '論壇'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
@@ -50474,9 +50474,9 @@ var ZWalletUnlockKey = function (_React$Component3) {
             _react2.default.createElement(
               'strong',
               null,
-              'Warning.'
+              '<提醒> '
             ),
-            '\xA0Make sure you have saved your secret phrase somewhere.'
+            '\xA0請確認您已記下您的密語。'
           ),
           this.state.secretPhraseTooShort ? _react2.default.createElement(
             _reactstrap.Alert,
@@ -50508,7 +50508,7 @@ var ZWalletUnlockKey = function (_React$Component3) {
               onChange: function onChange(e) {
                 return _this5.setState({ secretPhrase: e.target.value });
               },
-              placeholder: 'Secret phrase. e.g. cash cow money heros cardboard money bag late green'
+              placeholder: '密語。 例如： 霹靂卡霹靂拉拉波波莉娜貝貝魯多'
             })
           ),
           _react2.default.createElement(
@@ -50517,7 +50517,7 @@ var ZWalletUnlockKey = function (_React$Component3) {
             _react2.default.createElement(
               _reactstrap.Button,
               { color: 'secondary', className: 'btn-block', onClick: this.unlockHDWallet },
-              'Generate Wallet'
+              '創建錢包'
             )
           )
         );

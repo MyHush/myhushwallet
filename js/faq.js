@@ -27630,7 +27630,7 @@ var ZNavbar = function (_React$Component) {
               _react2.default.createElement(
                 _reactstrap.NavLink,
                 { href: '/faq.html' },
-                'FAQ'
+                '常見問題'
               )
             ),
             _react2.default.createElement(
@@ -27639,7 +27639,7 @@ var ZNavbar = function (_React$Component) {
               _react2.default.createElement(
                 _reactstrap.NavLink,
                 { href: '/guide.html' },
-                'GETTING STARTED'
+                '入門'
               )
             )
           )
@@ -30686,7 +30686,7 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'MAKE SURE YOU ARE ON ',
+                '請確認您是在這個網站上：',
                 _react2.default.createElement(
                   'b',
                   null,
@@ -30696,28 +30696,28 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Keys are validated client-side and do not leave your browser or network. You are responsible for keeping your own keys safe!!!'
+                '密鑰透過客戶端生效，請勿離開您的瀏覽器或網路。您有責任確保自己密鑰的安全！'
               ),
               _react2.default.createElement(
                 'p',
                 null,
-                'Suggestions?',
+                '有任何建議嗎？',
                _react2.default.createElement(
                 'a',
                 { href: 'https://myhush.org/#contact' },
-                ' Contact us '
+                '聯絡我們'
               ), 
-                'or join our ',
+                '或加我們的',
               _react2.default.createElement(
                 'a',
                 { href: 'https://discord.io/hush' },
-                'Discord '
+                'Discord'
               ),
-                'server!'),
+                '伺服器!'),
               _react2.default.createElement(
                 'p',
                 { style: longP },
-                'Donations are always welcome!',
+                '我們永遠歡迎您的捐款支持！',
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                   'b',
@@ -30733,13 +30733,13 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'a',
                 { href: 'https://myhush.org/' },
-                'website'
+                '網站'
               ),              
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
                 { href: 'https://forum.myhush.org/' },
-                'forum'
+                '論壇'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
@@ -31131,10 +31131,10 @@ var ZFaq = function (_React$Component) {
               _react2.default.createElement(
                 'b',
                 null,
-                'Q: Are my private keys secured?'
+                'Q: 我的私鑰安全嗎？'
               ),
               _react2.default.createElement('br', null),
-              'A: Yes they are secured, your private keys never leave your browser.'
+              'A: 很安全，您的私鑰不會離開您的瀏覽器。'
             ),
             _react2.default.createElement(
               'p',
@@ -31142,10 +31142,10 @@ var ZFaq = function (_React$Component) {
               _react2.default.createElement(
                 'b',
                 null,
-                'Q: How is this secure? Its on a web browser!'
+                'Q: 這樣怎麼會安全呢？他在瀏覽器上欸！'
               ),
               _react2.default.createElement('br', null),
-              'A: My Hush Wallet has replicated the core features of the HUSH daemon in JavaScript! So the process of creating and signing the transactions are all done within the browser. No sensitive information is sent through the network.'
+              'A: My Hush Wallet用JavaScript複製了HUSH daemon的核心特色!所以創立與簽署交易的過程，全程都在瀏覽器中進行。不會有任何敏感性的個資透過網路被傳送。'
             ),
             _react2.default.createElement(
               'p',
@@ -31153,14 +31153,14 @@ var ZFaq = function (_React$Component) {
               _react2.default.createElement(
                 'b',
                 null,
-                'Q: Can I have the source code?'
+                'Q: 我能拿到程式碼嗎？'
               ),
               _react2.default.createElement('br', null),
               'A: ',
               _react2.default.createElement(
                 'a',
                 { href: 'https://github.com/myhush/myhushwallet' },
-                'Here you go'
+                '在這裡'
               )
             ),
             _react2.default.createElement(
@@ -31169,22 +31169,22 @@ var ZFaq = function (_React$Component) {
               _react2.default.createElement(
                 'b',
                 null,
-                'Q: Why are you doing this?'
+                'Q: 你們怎麼會想做這些？'
               ),
               _react2.default.createElement('br', null),
-              'A: My Hush Wallet was inspired by ',
+              'A: My Hush Wallet是被',
               _react2.default.createElement(
                 'a',
                 { href: 'https://myzenwallet.io/' },
                 'MyZenWallet\'s'
               ),
-               'which was inspired by ',
+               '所啟發，而他們又是被',
               _react2.default.createElement(
                 'a',
                 { href: 'https://myetherwallet.com' },
                 'MyEtherWallet\'s'
               ),
-              '. We also want to provide the people the ability to interact with the HUSH blockchain easily, without having to run a full node.'
+              '所啟發。 我們也希望提供給人們能更簡便地與HUSH區塊鏈互動的能力, 而不需要自己運行一個全節點。'
             )
           )
         )

@@ -27693,7 +27693,7 @@ var ZNavbar = function (_React$Component) {
               _react2.default.createElement(
                 _reactstrap.NavLink,
                 { href: '/faq.html' },
-                'FAQ'
+                '常見問題'
               )
             ),
             _react2.default.createElement(
@@ -27702,7 +27702,7 @@ var ZNavbar = function (_React$Component) {
               _react2.default.createElement(
                 _reactstrap.NavLink,
                 { href: '/guide.html' },
-                'GETTING STARTED'
+                '入門'
               )
             )
           )
@@ -30749,7 +30749,7 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'MAKE SURE YOU ARE ON ',
+                '請確認您是在這個網站上：',
                 _react2.default.createElement(
                   'b',
                   null,
@@ -30759,28 +30759,28 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Keys are validated client-side and do not leave your browser or network. You are responsible for keeping your own keys safe!!!'
+                '密鑰透過客戶端生效，請勿離開您的瀏覽器或網路。您有責任確保自己密鑰的安全！'
               ),
               _react2.default.createElement(
                 'p',
                 null,
-                'Suggestions?',
+                '有任何建議嗎？',
                _react2.default.createElement(
                 'a',
                 { href: 'https://myhush.org/#contact' },
-                ' Contact us '
+                '聯絡我們'
               ),
-                'or join our ',
+                '或加我們的',
               _react2.default.createElement(
                 'a',
                 { href: 'https://discord.io/hush' },
-                'Discord '
+                'Discord'
               ),
-                'server!'),
+                '伺服器!'),
               _react2.default.createElement(
                 'p',
                 { style: longP },
-                'Donations are always welcome!',
+                '我們永遠歡迎您的捐款支持！',
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                   'b',
@@ -30796,13 +30796,13 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'a',
                 { href: 'https://myhush.org/' },
-                'website'
+                '網站'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
                 { href: 'https://forum.myhush.org/' },
-                'forum'
+                '論壇'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
@@ -31275,7 +31275,7 @@ var ZGuide = function (_React$Component) {
             _react2.default.createElement(
               'h3',
               null,
-              '1. Creating a new wallet'
+              '1. 創建一個新的錢包'
             ),
             _react2.default.createElement(
               'ul',
@@ -31283,7 +31283,7 @@ var ZGuide = function (_React$Component) {
               _react2.default.createElement(
                 'li',
                 null,
-                'Go to ',
+                '請前往',
                 _react2.default.createElement(
                   'a',
                   { href: 'https://wallet.myhush.org' },
@@ -31293,12 +31293,12 @@ var ZGuide = function (_React$Component) {
               _react2.default.createElement(
                 'li',
                 null,
-                'Enter a strong but easy to remember secret phrase. Save this somewhere and do NOT forget it.'
+                '輸入一個強度高又好記的密語。把這個密語記下來，千萬別忘記！'
               ),
               _react2.default.createElement(
                 'li',
                 null,
-                'Click the ',
+                '按下右邊的',
                 _react2.default.createElement(
                   'code',
                   null,
@@ -31306,7 +31306,7 @@ var ZGuide = function (_React$Component) {
                 ),
                 ' (',
                 _react2.default.createElement(_unlockAlt2.default, null),
-                ') on the right.'
+                ') '
               ),
               _react2.default.createElement(
                 'ul',
@@ -31314,13 +31314,13 @@ var ZGuide = function (_React$Component) {
                 _react2.default.createElement(
                   'li',
                   null,
-                  'This creates a ',
+                  '這將以你的密語為基礎，創建一個',
                   _react2.default.createElement(
                     'a',
                     { href: 'https://en.bitcoin.it/wiki/Deterministic_wallet' },
-                    'deterministic wallet'
+                    '樹形錢包（deterministic wallet）'
                   ),
-                  ' based on your secret phrase.'
+                  ''
                 )
               )
             ),
@@ -31328,7 +31328,7 @@ var ZGuide = function (_React$Component) {
             _react2.default.createElement(
               'h3',
               null,
-              '2. Accessing an existing wallet'
+              '2. 登入現有的錢包'
             ),
             _react2.default.createElement(
               'ul',
@@ -31336,24 +31336,24 @@ var ZGuide = function (_React$Component) {
               _react2.default.createElement(
                 'li',
                 null,
-                'If you\'ve created a wallet on ',
+                '如果您已透過密語在',
                 _react2.default.createElement(
                   'a',
                   { href: 'https://wallet.myhush.org' },
                   'https://wallet.myhush.org'
                 ),
-                ' via the secret phrase, simply re-enter the same phrase.'
+                '創建錢包，只要重新輸入密語即可。'
               ),
               _react2.default.createElement(
                 'li',
                 null,
-                'For those with a ',
+                '如果您有GUI錢包產生的',
                 _react2.default.createElement(
                   'code',
                   null,
                   'wallet.dat'
                 ),
-                ' file generated by GUI wallets. Click ',
+                '檔案，點擊',
                 _react2.default.createElement(
                   'code',
                   null,
@@ -31361,24 +31361,24 @@ var ZGuide = function (_React$Component) {
                 ),
                 ' (',
                 _react2.default.createElement(_settings2.default, null),
-                '), select the ',
+                ')，並選擇',
                 _react2.default.createElement(
                   'code',
                   null,
                   'Load wallet.dat'
                 ),
-                ' option and load your ',
+                '來匯入您的',
                 _react2.default.createElement(
                   'code',
                   null,
                   'wallet.dat'
                 ),
-                ' file'
+                '檔案'
               ),
               _react2.default.createElement(
                 'li',
                 null,
-                'To unlock a single address, Click ',
+                '若要解鎖單一的位址（address），請點擊',
                 _react2.default.createElement(
                   'code',
                   null,
@@ -31386,15 +31386,22 @@ var ZGuide = function (_React$Component) {
                 ),
                 ' (',
                 _react2.default.createElement(_settings2.default, null),
-                '), select the ',
+                ')，選擇',
                 _react2.default.createElement(
                   'code',
                   null,
                   'Paste private key'
                 ),
-                ' option, paste in your private key and click the unlock button (',
+                '，貼上您的私鑰並點擊解鎖鈕',
+                  _react2.default.createElement(
+                  'code',
+                  null,
+                  'Unlock Button'
+                ), 
+                  ' (',
                 _react2.default.createElement(_unlockAlt2.default, null),
                 ')'
+                
               )
             )
           )
