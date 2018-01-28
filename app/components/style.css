@@ -1,0 +1,70 @@
+.navbarstyle {
+    background: #2d2d2d;
+}
+.container {
+    max-width: 1200px;
+      margin: 0 auto;
+}
+.footerstyle{
+background: #2d2d2d;
+}
+.style{
+color: #ffffff;
+font-family: sans-serif;
+line-height: 2;
+font-size: 24px;
+}
+.style:hover{
+color: #bbbbbb;
+}
+.style2{
+color: #ffffff;
+font-family: sans-serif;
+line-height: 2;
+font-size: 18px;
+}
+.style2:hover{
+color: #bbbbbb;
+}
+.style2:focus{
+color: #bbbbbb;
+}
+
+.footerstyle a {
+    color: #ffffff;
+    font-weight: bold;
+}
+.footerstyle a:hover {
+color: #bbbbbb;
+text-decoration: none;
+}
+
+.footerstyle p{
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+.links a {
+font-family: sans-serif;
+font-size: 18px;
+font-weight: bold;
+}
+
+.customtoggler {
+    border-color: #ffffff;
+    width: 40px;
+    height: 40px;
+    margin-top:8px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg  viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.customtoggler:focus{
+    outline:0;
+}
+.outer {
+  width: 100%;
+  text-align: center;
+}
+.content-text{
+    text-align: center;
+    display: inline-block;
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -18,7 +18,41 @@
             align-items: center;
             justify-content: center;
         }
-        /*Translations*/
+        		/*Preloader*/
+
+.preloader{
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: auto;
+  background-image: url(./loader.gif); 
+  background-color:#2d2d2d; 
+  z-index:99; 
+}
+.preloader img{
+  display: block;
+  margin-bottom: 5px;
+}
+.preloader span{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.preloader span.second{
+  display: none;
+  color: #000;
+  font-size: 3em;
+}
+/*Translations*/
 .footer2{
     background: #2d2d2d;
     float:right;
@@ -44,8 +78,43 @@ text-decoration: none;
 }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="shortcut icon" href="favicon.ico"></head>
+</head>
 <body>
+    <script>
+        function createCookie(name, value, secs) {
+            if (secs) {
+                var date = new Date();
+                date.setTime(date.getTime() + (secs * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            }
+            else var expires = "";
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+    <script>
+        $(window).load(function () {
+            if (readCookie('myhushwallet') == null) {
+                $('#preloader').delay(5300).fadeOut('slow');}
+            createCookie('myhushwallet',1,300);
+        });
+    </script>
+    <script>
+    if (readCookie('myhushwallet') != null) {
+        document.write("<style>.preloader {display:none;}</style>");
+    }
+    </script>
+    <div class="preloader" id="preloader"></div>
     <div id="navbar"></div><br />
     <div class="aligner">
         <div id="wallet"></div>
@@ -104,5 +173,5 @@ text-decoration: none;
             });
         };
     </script>
-<script type="text/javascript" src="js/faq.js"></script></body>
+</body>
 </html>

@@ -31,10 +31,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             favicon: 'assets/images/favicon.ico',
-            template: './app/index.html',
+            template: './app/main.html',
             chunks: ['index'],
             filename: 'index.html',
-            inject: 'body'
+            inject: 'body',
         }),
         new HtmlWebpackPlugin({
             favicon: 'assets/images/favicon.ico',

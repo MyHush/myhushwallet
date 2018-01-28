@@ -18,9 +18,103 @@
             align-items: center;
             justify-content: center;
         }
+        		/*Preloader*/
+
+.preloader{
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: auto;
+  background-image: url(./loader.gif); 
+  background-color:#2d2d2d; 
+  z-index:99; 
+}
+.preloader img{
+  display: block;
+  margin-bottom: 5px;
+}
+.preloader span{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.preloader span.second{
+  display: none;
+  color: #000;
+  font-size: 3em;
+}
+/*Translations*/
+.footer2{
+    background: #2d2d2d;
+    float:right;
+    position:relative;
+}
+.aligner2{
+    margin-left:auto; 
+    margin-right:5px;
+    text-align: right;
+}
+.aligner2 a {
+    color: #ffffff;
+    font-weight: bold;
+}
+.aligner2 a:hover {
+color: #bbbbbb;
+text-decoration: none;
+}
+
+.aligner2 a:focus {
+color: #bbbbbb;
+text-decoration: none;
+}
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="favicon.ico"></head>
 <body>
+    <script>
+        function createCookie(name, value, secs) {
+            if (secs) {
+                var date = new Date();
+                date.setTime(date.getTime() + (secs * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            }
+            else var expires = "";
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+    <script>
+        $(window).load(function () {
+            if (readCookie('myhushwallet') == null) {
+                $('#preloader').delay(5300).fadeOut('slow');}
+            createCookie('myhushwallet',1,300);
+        });
+    </script>
+    <script>
+    if (readCookie('myhushwallet') != null) {
+        document.write("<style>.preloader {display:none;}</style>");
+    }
+    </script>
+    <div class="preloader" id="preloader"></div>
     <div id="navbar"></div><br />
     <div class="aligner">
         <div id="wallet"></div>
@@ -28,5 +122,56 @@
         <div id="faq"></div>
     </div><br />
     <div id="footer"></div>
+    <div class="footer2">
+        <div class="aligner2">
+            <a class="english" id="english" href="javascript:;" onclick="testch(this.id)">
+                [EN]
+            </a>
+            <a class="czech" id="czech" href="javascript:;" onclick="testch(this.id)">
+                [CZ]
+            </a>
+            <a class="russian" id="russian" href="javascript:;" onclick="testch(this.id)">
+                [RU]
+            </a>
+            <a class="ukrainian" id="ukrainian" href="javascript:;" onclick="testch(this.id)">
+                [UA]
+            </a>
+            <a class="chinese" id="chinese" href="javascript:;" onclick="testch(this.id)">
+                [ZH]
+            </a>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            if (localStorage.getItem('language') != null) {
+                language = localStorage.getItem('language');
+                $.ajax({
+                    url: 'translations/' + language + '.xml',
+                    success: function (xml) {
+                        $(xml).find('translation').each(function () {
+                            var id = $(this).attr('id');
+                            var text = $(this).text();
+                            $("." + id).html(text);
+                        });
+                    }
+                });
+            }
+        });
+
+        function testch(id) {
+            localStorage.setItem('language', id);
+            language = id
+            $.ajax({
+                url: 'translations/' + language + '.xml',
+                success: function (xml) {
+                    $(xml).find('translation').each(function () {
+                        var id = $(this).attr('id');
+                        var text = $(this).text();
+                        $("." + id).html(text);
+                    });
+                }
+            });
+        };
+    </script>
 <script type="text/javascript" src="js/index.js"></script></body>
 </html>

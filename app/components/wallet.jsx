@@ -119,14 +119,15 @@ class ZWalletUnlockKey extends React.Component {
     this.unlockHDWallet = this.unlockHDWallet.bind(this)
     this.loadWalletDat = this.loadWalletDat.bind(this)
     this.toggleShowPassword = this.toggleShowPassword.bind(this)
-    this.unlockPrivateKeys = this.unlockPrivateKeys.bind(this)    
+    this.unlockPrivateKeys = this.unlockPrivateKeys.bind(this)
+    this.toggleUseLimChars = this.toggleUseLimChars.bind(this)   
 
     this.state = {
       showPassword: false,
       secretPhrase: '',
       invalidPrivateKey: false,
-      secretPhraseTooShort: false,      
-
+      secretPhraseTooShort: false,
+      useLimChars: false,   
       // Style for input button
       inputFileStyle: {
           WebkitAppearance: 'button',
@@ -135,9 +136,15 @@ class ZWalletUnlockKey extends React.Component {
     }
   }  
 
+  toggleUseLimChars(){
+this.setState({
+useLimChars: !this.state.useLimChars,
+})   
+  }
+
   toggleShowPassword(){
     this.setState({
-      showPassword: !this.state.showPassword
+      showPassword: !this.state.showPassword,
     })
   }
 
@@ -212,8 +219,8 @@ class ZWalletUnlockKey extends React.Component {
         <Form>
           <FormGroup row>            
             <Col>
-              {this.state.invalidPrivateKey ? <Alert color="danger"><strong>Error.</strong>&nbsp;Keys in files are corrupted</Alert> : ''}
-              <Label for="walletDatFile" className="btn btn-block btn-secondary" style={this.state.inputFileStyle}>Select wallet.dat file
+              {this.state.invalidPrivateKey ? <Alert color="danger"><strong><span className="import1">Error.</span></strong>&nbsp;<span className="import2">Keys in files are corrupted</span></Alert> : ''}
+               <Label for="walletDatFile" className="btn btn-block btn-secondary" style={this.state.inputFileStyle}><span className="import3">Select wallet.dat file</span>
                 <Input
                   style={{display: 'none'}}
                   type="file"                 
@@ -223,8 +230,8 @@ class ZWalletUnlockKey extends React.Component {
                 />
               </Label>
               <FormText color="muted">
-                For Windows, it should be in %APPDATA%/Roaming/Hush<br/>
-                For Mac/Linux, it should be in ~/.Hush
+                <span className="import4">For Windows, it should be in</span> %APPDATA%/Hush<br/>
+                <span className="import5">For Mac/Linux, it should be in</span> ~/.Hush
               </FormText>
             </Col>
           </FormGroup>
@@ -235,7 +242,7 @@ class ZWalletUnlockKey extends React.Component {
     else if (this.props.unlockType == UNLOCK_WALLET_TYPE.PASTE_PRIV_KEY){
       return (
         <div>
-          {this.state.invalidPrivateKey ? <Alert color="danger"><strong>Error.</strong>&nbsp;Invalid private key</Alert> : ''}
+          {this.state.invalidPrivateKey ? <Alert color="danger"><strong><span className="import1">Error.</span></strong>&nbsp;<span className="import6">Invalid private key</span></Alert> : ''}
           <InputGroup>                                       
             <InputGroupButton>
               <Button id={4}
@@ -249,17 +256,17 @@ class ZWalletUnlockKey extends React.Component {
             />
           </InputGroup>
           <div style={{paddingTop: '8px'}}>
-            <Button color="secondary" className="btn-block" onClick={this.unlockPrivateKeys}>Unlock Private Key</Button>
+            <Button color="secondary" className="btn-block" onClick={this.unlockPrivateKeys}><span className="import7">Unlock Private Key</span></Button>
           </div>
         </div>
       )
     }
-
+ 
     else if (this.props.unlockType == UNLOCK_WALLET_TYPE.HD_WALLET){
       return (
         <div>
-          <Alert color="warning"><strong>Warning.</strong>&nbsp;Make sure you have saved your secret phrase somewhere.</Alert>
-          {this.state.secretPhraseTooShort ? <Alert color="danger"><strong>Error.</strong>&nbsp;Secret phrase too short</Alert> : '' }
+          <Alert color="warning"><strong><span className="wallet1">Warning.</span></strong>&nbsp;<span className="wallet2">Make sure you have saved your secret phrase somewhere. The 256/64 button to the right switches between maximum allowed input length.</span></Alert>
+          {this.state.secretPhraseTooShort ? <Alert color="danger"><strong><span className="import1">Error.</span></strong>&nbsp;<span className="wallet3">Secret phrase too short</span></Alert> : '' }
           <InputGroup>                                       
             <InputGroupButton>
               <Button id={7}
@@ -268,13 +275,18 @@ class ZWalletUnlockKey extends React.Component {
             </InputGroupButton>
             <Input
               type={this.state.showPassword ? "text" : "password"}
-              maxLength="64"
+              maxLength={this.state.useLimChars ? "64" : "256"} //"256" ZWallet
               onChange={(e) => this.setState({secretPhrase: e.target.value})}
               placeholder="Secret phrase. e.g. cash cow money heros cardboard money bag late green"
-            />                        
+            />
+            <InputGroupButton>
+              <Button id={423}
+                onClick={this.toggleUseLimChars}                
+              >{this.state.useLimChars? "64" : "256"}</Button>
+            </InputGroupButton>                     
           </InputGroup>
           <div style={{paddingTop: '8px'}}>
-            <Button color="secondary" className="btn-block" onClick={this.unlockHDWallet}>Generate Wallet</Button>
+            <Button color="secondary" className="btn-block" onClick={this.unlockHDWallet}><span className="wallet4">Generate/Unlock Wallet</span></Button>
           </div>
         </div>
       )
@@ -286,7 +298,7 @@ class ZWalletSettings extends React.Component {
   render () {
     return (
       <Modal isOpen={this.props.settings.showSettings} toggle={this.props.toggleModalSettings}>
-        <ModalHeader toggle={this.props.toggleShowSettings}>Hush Wallet Settings</ModalHeader>                  
+        <ModalHeader toggle={this.props.toggleShowSettings}><span className="settings1">Hush Wallet Settings</span></ModalHeader>                  
         <ModalBody>
           <ZWalletSelectUnlockType
               setUnlockType={this.props.setUnlockType}
@@ -295,7 +307,7 @@ class ZWalletSettings extends React.Component {
         </ModalBody>
         <ModalBody>                              
           <InputGroup>
-            <InputGroupAddon>Insight API</InputGroupAddon>
+            <InputGroupAddon><span className="settings2">Insight API</span></InputGroupAddon>
             <Input 
               value={this.props.settings.insightAPI}
               onChange={(e) => this.props.setInsightAPI(e.target.value)}
@@ -309,7 +321,7 @@ class ZWalletSettings extends React.Component {
                   defaultChecked={this.props.settings.compressPubKey} type="checkbox" 
                   onChange={this.props.toggleCompressPubKey}
                 />{' '}
-                Compress Public Key
+                <span className="settings3">Compress Public Key</span>
               </Label>
             </Col>
             <Col sm="6">
@@ -318,19 +330,19 @@ class ZWalletSettings extends React.Component {
                   defaultChecked={this.props.settings.showWalletGen} type="checkbox" 
                   onChange={this.props.toggleShowWalletGen}
                 />{' '}
-                Show Address Generator
+                <span className="settings4">Show Address Generator</span>
               </Label>
             </Col>
           </Row>
         </ModalBody>        
         <ModalFooter>
-          <Label>
+          <Label check>
             <Input
               disabled={!(this.props.publicAddresses === null)}
               defaultChecked={this.props.settings.useTestNet} type="checkbox" 
               onChange={this.props.toggleUseTestNet}
             />{' '}
-            testnet
+            <span className="settings5">testnet</span>
           </Label>
         </ModalFooter>
       </Modal>
@@ -453,9 +465,9 @@ class ZAddressInfo extends React.Component {
           <Card>
             <CardBlock>                                                          
               {this.state.retrieveAddressError ?
-              <Alert color="danger">Error connecting to the Insight API. Double check the Insight API supplied in settings.</Alert>
+              <Alert color="danger"><span className="retrieve1">Error connecting to the Insight API. Double check the Insight API supplied in settings.</span></Alert>
               :
-              <Alert color="warning">The balance displayed here is dependent on the insight node.<br/>Automatically updates every 5 minutes. Alternatively, you can <a href="#" onClick={() => this.updateAddressesInfo()}>forcefully refresh</a> them.</Alert>
+              <Alert color="warning"><span className="retrieve2">The balance displayed here is dependent on the insight node.</span><br/><span className="retrieve3">Automatically updates every 5 minutes. Alternatively, you can</span> <a href="#" onClick={() => this.updateAddressesInfo()}><span className="retrieve4">forcefully refresh</span></a> <span className="retrieve5">them.</span></Alert>
               }                                          
             </CardBlock>
           </Card>  
@@ -713,7 +725,7 @@ class ZSendHUSH extends React.Component {
       var hushtx = hushwalletutils.urlAppend(this.props.settings.explorerURL, 'tx/') + this.state.sentTxid
       hushTxLink = (
         <Alert color="success">
-        <strong>HUSH successfully sent!</strong> <a href={hushtx}>Click here to view your transaction</a>
+        <strong><span className="send1">HUSH successfully sent!</span></strong> <a href={hushtx}><span className="send2">Click here to view your transaction</span></a>
         </Alert>
       )      
     }
@@ -725,7 +737,7 @@ class ZSendHUSH extends React.Component {
           if (s !== ''){
             return (
               <Alert color="danger">
-              <strong>Error.</strong> {s}
+              <strong><span className="import1">Error.</span></strong> {s}
               </Alert>
             )
           }
@@ -749,31 +761,31 @@ class ZSendHUSH extends React.Component {
         <Col>
           <Card>
             <CardBlock>       
-              <Alert color="danger">ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF HUSH FIRST</Alert>              
+              <Alert color="danger"><span className="send3">ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF HUSH FIRST</span></Alert>              
               <InputGroup>
-                <InputGroupAddon>From Address</InputGroupAddon>
+                <InputGroupAddon><span className="send4">From Address</span></InputGroupAddon>
                 <Input type="select" onChange={this.handleUpdateSelectedAddress}>
                   <option value=''></option>
                   {sendAddresses}
                 </Input>
               </InputGroup>
               <InputGroup>
-                <InputGroupAddon>To Address</InputGroupAddon>
-                <Input onChange={this.handleUpdateRecipientAddress} placeholder="e.g t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ" />
+                <InputGroupAddon><span className="send5">To Address</span></InputGroupAddon>
+                <Input onChange={this.handleUpdateRecipientAddress} placeholder="e.g t1h6kmaQwcuyejDLazT3TNZfV8EEtCzHRhc" />
               </InputGroup>
               <InputGroup>
-                <InputGroupAddon>Amount</InputGroupAddon>
+                <InputGroupAddon><span className="send6">Amount</span></InputGroupAddon>
                 <Input onChange={this.handleUpdateAmount} placeholder="e.g 42" />
               </InputGroup>
               <InputGroup>
-                <InputGroupAddon>Fee</InputGroupAddon>
-                <Input onChange={this.handleUpdateFee} placeholder="e.g 0.001" />
+                <InputGroupAddon><span className="send7">Fee</span></InputGroupAddon>
+                <Input onChange={this.handleUpdateFee} placeholder="e.g 0.0001" />
               </InputGroup>
               <br/>
               <FormGroup check>
                 <Label check>
                   <Input onChange={this.handleCheckChanged} type="checkbox" />{' '}
-                  Yes, I would like to send these HUSH
+                  <span className="send8">Yes, I would like to send these HUSH</span>
                 </Label>
               </FormGroup> 
               <br/>                           
@@ -781,7 +793,7 @@ class ZSendHUSH extends React.Component {
                 color="warning" className="btn-block"
                 disabled={!this.state.confirmSend || (this.state.sendProgress > 0 && this.state.sendProgress < 100)}
                 onClick={this.handleSendHUSH}
-              >Send</Button>
+              ><span className="send9">Send</span></Button>
             </CardBlock>
             <CardFooter> 
               {hushTxLink}
@@ -813,9 +825,9 @@ class ZWalletSelectUnlockType extends React.Component {
     return ( 
       <div style={{textAlign: 'center'}}>  
         <ButtonGroup vertical>                 
-          <Button color="secondary" onClick={() => this.onRadioBtnClick(UNLOCK_WALLET_TYPE.HD_WALLET)} active={this.state.cSelected === UNLOCK_WALLET_TYPE.HD_WALLET}>Enter secret phrase</Button>
-          <Button color="secondary" onClick={() => this.onRadioBtnClick(UNLOCK_WALLET_TYPE.IMPORT_WALLET)} active={this.state.cSelected === UNLOCK_WALLET_TYPE.IMPORT_WALLET}>Load wallet.dat</Button>        
-          <Button color="secondary" onClick={() => this.onRadioBtnClick(UNLOCK_WALLET_TYPE.PASTE_PRIV_KEY)} active={this.state.cSelected === UNLOCK_WALLET_TYPE.PASTE_PRIV_KEY}>Paste private key</Button>      
+          <Button color="secondary" onClick={() => this.onRadioBtnClick(UNLOCK_WALLET_TYPE.HD_WALLET)} active={this.state.cSelected === UNLOCK_WALLET_TYPE.HD_WALLET}><span className="settings6">Enter secret phrase</span></Button>
+          <Button color="secondary" onClick={() => this.onRadioBtnClick(UNLOCK_WALLET_TYPE.IMPORT_WALLET)} active={this.state.cSelected === UNLOCK_WALLET_TYPE.IMPORT_WALLET}><span className="settings7">Load wallet.dat</span></Button>        
+          <Button color="secondary" onClick={() => this.onRadioBtnClick(UNLOCK_WALLET_TYPE.PASTE_PRIV_KEY)} active={this.state.cSelected === UNLOCK_WALLET_TYPE.PASTE_PRIV_KEY}><span className="settings8">Paste private key</span></Button>      
         </ButtonGroup>
       </div>
     )
@@ -858,7 +870,7 @@ class ZPrintableKeys extends React.Component {
 
     return (
       <div>
-        <h3>Printable Wallet</h3>
+        <h3><span className="print1">Printable Wallet</span></h3>
           <Input type="select" onChange={this.handleUpdateSelectedAddress}>
             <option value=''></option>
             {sendAddresses}
@@ -933,7 +945,7 @@ class ZWalletTabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggleTabs('1'); }}
             >
-              Info
+              <span className="menu1">Info</span>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -941,7 +953,7 @@ class ZWalletTabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggleTabs('2'); }}
             >
-              Send HUSH
+              <span className="menu2">Send HUSH</span>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -949,7 +961,7 @@ class ZWalletTabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '3' })}
               onClick={() => { this.toggleTabs('3'); }}
             >
-              Export
+              <span className="menu3">Export</span>
             </NavLink>
           </NavItem>       
         </Nav>
@@ -975,11 +987,11 @@ class ZWalletTabs extends React.Component {
                     <ZPrintableKeys publicAddresses={this.props.publicAddresses}/>                  
                   </CardBlock>                  
                   <CardBlock>
-                    <h3>Private Key Dump</h3>
+                    <h3><span className="export1">Private Key Dump</span></h3>
                     <Button 
                       color="secondary" className="btn-block"
                       onClick={this.savePrivateKeys}                  
-                    >Download Private Keys</Button>
+                    ><span className="export2">Download Private Keys</span></Button>
                   </CardBlock>
                 </Card>
               </Col>
@@ -1018,8 +1030,8 @@ export default class ZWallet extends React.Component {
         useTestNet: false,
         unlockType: UNLOCK_WALLET_TYPE.HD_WALLET
       }
-    };    
-  }  
+    };  
+  } 
 
   handleUnlockPrivateKeys(){    
     if (this.state.privateKeys.length === 0){
@@ -1147,8 +1159,8 @@ export default class ZWallet extends React.Component {
     _settings.useTestNet = !_settings.useTestNet
 
     if (_settings.useTestNet){
-        _settings.insightAPI = 'https://explorer.testnet.myhush.org/api'
-      _settings.explorerURL = 'https://explorer.testnet.myhush.org/'
+        _settings.insightAPI = 'https://testnet.myhush.org/api'
+      _settings.explorerURL = 'https://testnet.myhush.org/'
     }
     else{
         _settings.insightAPI = 'https://explorer.myhush.org/api'
@@ -1183,7 +1195,7 @@ export default class ZWallet extends React.Component {
       <Container>
         <Row>
           <Col>
-            <h1 className='display-6'>Hush Wallet&nbsp;
+            <h1 className='display-6'><span className="main1">Hush Wallet</span>&nbsp;
               <ToolTipButton onClick={this.toggleShowSettings} id={1} buttonText={<MDSettings/>} tooltipText={'settings'}/>&nbsp;
               <ToolTipButton disabled={this.state.publicAddresses === null} onClick={this.resetKeys} id={2} buttonText={<FARepeat/>} tooltipText={'reset wallet'}/>
             </h1>
@@ -1192,7 +1204,7 @@ export default class ZWallet extends React.Component {
               toggleShowSettings={this.toggleShowSettings}
               toggleCompressPubKey={this.toggleCompressPubKey}           
               toggleShowWalletGen={this.toggleShowWalletGen}
-              toggleUseTestNet={this.toggleUseTestNet}              
+              toggleUseTestNet={this.toggleUseTestNet}           
               setInsightAPI={this.setInsightAPI}
               settings={this.state.settings}
               publicAddresses={this.state.publicAddresses}
