@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico">
-    <title>My Hush Wallet</title>    
+    <title>My Hush Wallet</title>
     <style>
         body {
             display: flex;
@@ -18,24 +17,92 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }   
+        }
+        /*Translations*/
+.footer2{
+    background: #2d2d2d;
+    float:right;
+    position:relative;
+}
+.aligner2{
+    margin-left:auto; 
+    margin-right:5px;
+    text-align: right;
+}
+.aligner2 a {
+    color: #ffffff;
+    font-weight: bold;
+}
+.aligner2 a:hover {
+color: #bbbbbb;
+text-decoration: none;
+}
+
+.aligner2 a:focus {
+color: #bbbbbb;
+text-decoration: none;
+}
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="favicon.ico"></head>
-
 <body>
-    <div id="navbar"></div><br/>
-
-    <div class="aligner">        
+    <div id="navbar"></div><br />
+    <div class="aligner">
         <div id="wallet"></div>
         <div id="guide"></div>
         <div id="faq"></div>
-    </div><br/>
-
+    </div><br />
     <div id="footer"></div>
-    
+    <div class="footer2">
+        <div class="aligner2">
+            <a class="english" id="english" href="javascript:;" onclick="testch(this.id)">
+                [EN]
+            </a>
+            <a class="czech" id="czech" href="javascript:;" onclick="testch(this.id)">
+                [CZ]
+            </a>
+            <a class="russian" id="russian" href="javascript:;" onclick="testch(this.id)">
+                [RU]
+            </a>
+            <a class="ukrainian" id="ukrainian" href="javascript:;" onclick="testch(this.id)">
+                [UA]
+            </a>
+            <a class="chinese" id="chinese" href="javascript:;" onclick="testch(this.id)">
+                [ZH]
+            </a>
+        </div>
+    </div>
     <script>
-// GA script
+        $(document).ready(function () {
+            if (localStorage.getItem('language') != null) {
+                language = localStorage.getItem('language');
+                $.ajax({
+                    url: 'translations/' + language + '.xml',
+                    success: function (xml) {
+                        $(xml).find('translation').each(function () {
+                            var id = $(this).attr('id');
+                            var text = $(this).text();
+                            $("." + id).html(text);
+                        });
+                    }
+                });
+            }
+        });
+
+        function testch(id) {
+            localStorage.setItem('language', id);
+            language = id
+            $.ajax({
+                url: 'translations/' + language + '.xml',
+                success: function (xml) {
+                    $(xml).find('translation').each(function () {
+                        var id = $(this).attr('id');
+                        var text = $(this).text();
+                        $("." + id).html(text);
+                    });
+                }
+            });
+        };
     </script>
 <script type="text/javascript" src="js/faq.js"></script></body>
-
 </html>
