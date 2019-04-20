@@ -617,8 +617,8 @@ class ZSendHUSH extends React.Component {
       errString += '`From Address` field can\'t be empty.;'
     }
 
-    if (recipientAddress.length !== 35) {
-      errString += 'Invalid address. Only transparent addresses are supported at this point in time.;'
+    if (recipientAddress.length !== 34) {
+      errString += 'Invalid address.;'
     }
 
     if (typeof parseInt(value) !== 'number' || value === ''){
@@ -786,7 +786,7 @@ class ZSendHUSH extends React.Component {
               </InputGroup>
               <InputGroup>
                 <InputGroupAddon>To Address</InputGroupAddon>
-                <Input onChange={this.handleUpdateRecipientAddress} placeholder="e.g t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ" />
+                <Input onChange={this.handleUpdateRecipientAddress} placeholder="e.g RHushEyeDm7XwtaTWtyCbjGQumYyV8vMjn" />
               </InputGroup>
               <InputGroup>
                 <InputGroupAddon>Amount</InputGroupAddon>
@@ -1040,8 +1040,8 @@ export default class ZWallet extends React.Component {
         showSettings: false,
         showWalletGen: false,
         compressPubKey: true,
-        insightAPI: 'https://explorer.hush.zelcore.io/api',
-        explorerURL: 'https://explorer.hush.zelcore.io/',
+        insightAPI: 'https://explorer.myhush.org/insight-api-komodo',
+        explorerURL: 'https://explorer.myhush.org/',
         useTestNet: false,
         unlockType: UNLOCK_WALLET_TYPE.HD_WALLET
       }
@@ -1174,12 +1174,12 @@ export default class ZWallet extends React.Component {
     _settings.useTestNet = !_settings.useTestNet
 
     if (_settings.useTestNet){
-        _settings.insightAPI = 'https://explorer.testnet.myhush.org/api'
+        _settings.insightAPI = 'https://explorer.testnet.myhush.org/insight-api-komodo'
       _settings.explorerURL = 'https://explorer.testnet.myhush.org/'
     }
     else{
-        _settings.insightAPI = 'https://explorer.hush.zelcore.io/api'
-        _settings.explorerURL = 'https://explorer.hush.zelcore.io/'
+        _settings.insightAPI = 'https://explorer.myhush.org/insight-api-komodo'
+        _settings.explorerURL = 'https://explorer.myhush.org/'
     }
 
     this.setState({
