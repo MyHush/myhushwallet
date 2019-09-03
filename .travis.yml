@@ -1,0 +1,15 @@
+language: node_js
+sudo: required
+dist: xenial
+node_js: "10"
+install:
+  - yarn install
+script:
+  - yarn run build
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: build
+    on:
+        branch: master
