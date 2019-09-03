@@ -7,9 +7,10 @@ import classnames from 'classnames'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import ReactTable from 'react-table'
 
+import bitgotx from 'bitgo-utxo-lib'
+
 import address from '../lib/hushjs/address'
 import config from '../lib/hushjs/config'
-import transaction from '../lib/hushjs/transaction'
 
 import hushwalletutils from '../lib/utils'
 import hdwallet from '../lib/hdwallet'
@@ -641,7 +642,14 @@ class ZSendHUSH extends React.Component {
     }
 
     // Private key
-    const senderPrivateKey = this.props.publicAddresses[senderAddress].privateKey;
+    let senderPrivateKey = this.props.publicAddresses[senderAddress].privateKey;
+
+    var wifHash = this.props.settings.useTestNet ? '80' : 'bc'
+
+    if (senderPrivateKey.length !== 64){
+      senderPrivateKey = address.WIFToPrivKey(senderPrivateKey)
+    }         
+    var senderPrivateKeyWIF = address.privKeyToWIF(senderPrivateKey, true, wifHash)
 
     // Get previous transactions
     const prevTxURL = hushwalletutils.urlAppend(this.props.settings.insightAPI, 'addr/') + senderAddress + '/utxo'
@@ -664,12 +672,12 @@ class ZSendHUSH extends React.Component {
       axios.get(infoURL)
       .then(function (info_resp){
         this.setProgressValue(50)
-        //const info_data = info_resp.data
-        var i
+        const info_data = info_resp.data
+        var expiryHeight = info_data.info.blocks + 30 //one hour
 
           // Iterate through each utxo
           // append it to history
-          for (i = 0; i < tx_data.length; i ++){
+          for (var i = 0; i < tx_data.length; i ++){
             if (tx_data[i].confirmations === 0){
               continue;
             }
@@ -677,7 +685,8 @@ class ZSendHUSH extends React.Component {
             history = history.concat({
               txid: tx_data[i].txid,
               vout: tx_data[i].vout,
-              scriptPubKey: tx_data[i].scriptPubKey,            
+              scriptPubKey: tx_data[i].scriptPubKey,
+              satoshis: tx_data[i].satoshis
             });
             
             // How many satoshis do we have so far
@@ -701,16 +710,30 @@ class ZSendHUSH extends React.Component {
             recipients = recipients.concat({address: senderAddress, satoshis: refundSatoshis})
           }
 
-          // Create transaction
-          var txObj = transaction.createRawTx(history, recipients)
+          // Creation of transaction
+          var network = this.props.settings.useTestNet ? bitgotx.networks.komodo : bitgotx.networks.komodo; // komodo has bitcoin prefixes for testnet. Needs network specification in network.
+          var maxFeeRate = satoshisfeesToSend;
+          const txb = new bitgotx.TransactionBuilder(network, maxFeeRate);
 
-          // Sign each history transcation          
-          for (i = 0; i < history.length; i ++){
-            txObj = transaction.signTx(txObj, i, senderPrivateKey, this.props.settings.compressPubKey)
+          txb.setVersion(4);
+          txb.setVersionGroupId(0x892F2085);
+          txb.setExpiryHeight(expiryHeight);
+
+           // Add Inputs/Outputs
+          history.forEach(x => txb.addInput(x.txid, x.vout));
+          recipients.forEach(x => txb.addOutput(x.address, x.satoshis));
+          console.log(txb)
+
+           // Sign
+          var keyPair = bitgotx.ECPair.fromWIF(senderPrivateKeyWIF, network)
+          const hashType = bitgotx.Transaction.SIGHASH_ALL
+          for (let i = 0; i < txb.inputs.length; i++) {
+            txb.sign(i, keyPair, null, hashType, history[i].satoshis);
           }
-
-          // Convert it to hex string
-          const txHexString = transaction.serializeTx(txObj)
+          console.log(txb)
+          // Make it rain
+          const result = txb.build();
+          const txHexString = result.toHex();
 
           axios.post(sendRawTxURL, {rawtx: txHexString})
           .then(function(sendtx_resp){         
