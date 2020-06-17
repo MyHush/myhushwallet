@@ -11,7 +11,7 @@ class MainRouter extends Component {
     return (
       <main>
         <Switch>
-          <Route exact path='/' component={Wallet}/>
+          <Route exact path='/myhushwallet/' component={Wallet}/>
           <Route exact path='/faq' component={Faq}/>
           <Route exact path='/getting_started' component={Getting_started}/>
           <Route exact path='/contact' component={Contact}/>

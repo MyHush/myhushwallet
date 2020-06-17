@@ -426,14 +426,22 @@ class ZAddressInfo extends React.Component {
         const c_confirmed = Number(this.props.publicAddresses[key].confirmedBalance)
         const c_unconfirmed = Number(this.props.publicAddresses[key].unconfirmedBalance)
         if (!isNaN(c_confirmed)){
-          totalConfirmed += c_confirmed
+          totalConfirmed += c_confirmed * 100000000
         }
 
         if (!isNaN(c_unconfirmed)){
-          totalUnconfirmed += c_unconfirmed
+          totalUnconfirmed += c_unconfirmed * 100000000
         }
       }
     }.bind(this))
+
+    if (!isNaN(totalConfirmed)){
+      totalConfirmed = totalConfirmed / 100000000
+    }
+
+    if (!isNaN(totalUnconfirmed)){
+      totalUnconfirmed = totalUnconfirmed / 100000000
+    }
 
     const addressColumns = [{
       Header: 'Address',

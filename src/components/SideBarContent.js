@@ -40,7 +40,7 @@ const SidebarContent = props => {
   return (
     <SideBarPanel title={'Menu'} style={style}>
       <div style={styles.content}>
-        <Link to='/'style={styles.sidebarLink}>Wallet</Link>
+        <Link to='/myhushwallet/'style={styles.sidebarLink}>Wallet</Link>
         <Link to='/getting_started'style={styles.sidebarLink}>Getting started</Link>
         <Link to='/faq'style={styles.sidebarLink}>FAQ</Link>
         <Link to='/contact'style={styles.sidebarLink}>Contact</Link>

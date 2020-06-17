@@ -13,7 +13,7 @@ module.exports = {
         scriptHash: '55',
         zcPaymentAddressHash: '169a',
         zcSpendingKeyHash: 'ab36',
-        wif: '80'
+        wif: 'BC'
     },
     testnet: {
         messagePrefix: 'HUSH testnet',
